@@ -1,0 +1,17 @@
+name: PSScript
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '50 8 * * *'
+
+jobs:
+  build:
+    name: PSScriptAnalyzer
+    env:
+      url: ${{ secrets.URL }}
+      text: ${{ secrets.TEXT }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: .\单子提醒.ps1
